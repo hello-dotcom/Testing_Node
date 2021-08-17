@@ -47,6 +47,9 @@ app.post('/register',async(req,res)=>{
     .then(response=>res.send({status:200,result:"inserted"}))
     .catch(err=>res.send({status:400,result:"some thing went wrong"}));
 })
+app.get('/',async(req,res)=>{
+	res.send("hello world");
+});
 
 app.post('/login',async(req,res)=>{
     const out= await User.findOne({email:req.body.email});
