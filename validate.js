@@ -1,4 +1,4 @@
-const bcrypt=require('bcrypt');
+const bcrypt=require('bcryptjs');
 const jwt= require('jsonwebtoken')
 const valildateToken=async (req,res,next)=>{
     const obj = await jwt.verify(req.headers.authorization.split(" ")[1],"simplilearn",(err,payload)=>{
