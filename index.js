@@ -34,9 +34,11 @@ initialize();
 
 app.post('/register',async(req,res)=>{
   
-    if(await User.findOne({email:req.body.email})!=null)
+    const out= await User.findOne({email:req.body.email});
+    if(out!=null)
     {
-        res.send({status:400,result:"this email is alreay used"});
+        res.send({status:400,result:"mail already in use"});
+        return ;
     }
     const hash=await bcrypt.hash(req.body.password,10);
     const object = new User({
